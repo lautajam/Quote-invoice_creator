@@ -1,0 +1,65 @@
+<h1 style="text-align: center;">FACTURA GENERICA</h1>
+<br>
+<hr/><br>
+<div>Fecha: {{date}}</div>
+<div>Cliente: {{client.name}}</div>
+<div>Purchase number: {{purchase_number}}</div>
+<br>
+<hr/><br>
+<div>
+    <table style="border-collapse: collapse; width: 100%; height: 16px;" border="0">
+        <tbody>
+            <tr style="height: 16px;">
+                <td style="width: 33.3333%; text-align: center; height: 16px;">Descripcion:</td>
+                <td style="width: 33.3333%; text-align: center; height: 16px;">Cantidad</td>
+                <td style="width: 33.3333%; text-align: center; height: 16px;">Precio</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <table style="border-collapse: collapse; width: 100%;" border="0">
+        {% for product in products %}
+            <tbody>
+                <tr>
+                    <td style="width: 33.3333%; text-align: center;">
+                        <ul>
+                            <li style="text-align: left;">{{product.name}}</li>
+                        </ul>
+                    </td>
+                    <td style="width: 33.3333%; text-align: center;">{{product.amount}}</td>
+                    <td style="width: 33.3333%; text-align: center;">$ {{product.price}}</td>
+                </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+    <br>
+    <hr /><br>
+    <table style="border-collapse: collapse; width: 100%; height: 36px;" border="0">
+        <tbody>
+            <tr style="height: 18px;">
+                <td style="width: 33.3333%; height: 18px;">Subtotal:</td>
+                <td style="width: 33.3333%; height: 18px;"></td>
+                <td style="width: 33.3333%; height: 18px; text-align: center;">$ {{subtotal}}</td>
+            </tr>
+            <tr style="height: 18px;">
+                <td style="width: 33.3333%; height: 18px;">Taxes ({{taxes_porcent}}%):</td>
+                <td style="width: 33.3333%; height: 18px;"></td>
+                <td style="width: 33.3333%; height: 18px; text-align: center;">$ {{taxes}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <hr /><br>
+    <table style="border-collapse: collapse; width: 100%;" border="0">
+        <tbody>
+            <tr>
+                <td style="width: 33.3333%;">Total:</td>
+                <td style="width: 33.3333%;"></td>
+                <td style="width: 33.3333%; text-align: center;">${{total}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <hr />
+    <p>Gracias por su compra!</p>
+</div>

@@ -2,49 +2,59 @@
 import pdfkit
 import jinja2
 from datetime import datetime
+from models import Client, Product
 
-# Create a pdf variables
-date = datetime.today().strftime("%d - %b - %y")
-client = "Empresas Juanito"
-number = 1
-first_product = "Pc gamer"
-fp_cant = 3
-fp_price = 234
-second_product = "Liquido de frenos"
-sp_cant = 19
-sp_price = 15
-sub_total = fp_cant * fp_price + sp_cant * sp_price
-taxes = sub_total * 0.10
-total = sub_total + taxes
-
-# The diccionary about the variables for insert in html
-context = {
-    "date": date,
-    "client": client,
-    "number": number,
-    "first_product": first_product,
-    "fp_cant": fp_cant,
-    "fp_price": fp_price,
-    "second_product": second_product,
-    "sp_cant": sp_cant,
-    "sp_price": sp_price,
-    "sub_total": sub_total,
-    "taxes": taxes,
-    "total": total
-}
+# Clculates a subtotal, teaxes and total about the products
+def calculator_total(products, taxes_porcent):
+    subtotal, taxes, total = 0, 0, 0
+    for product in products:
+        subtotal += product.amount * product.price
+    taxes = subtotal * (taxes_porcent / 100)
+    total = subtotal + taxes
+    return subtotal, taxes, total
 
 # Templates configuration
 template_loader = jinja2.FileSystemLoader("pdf_creator/templates/")
 template_env = jinja2.Environment(loader=template_loader)
-html_template = 'quote.html'
+html_template = 'invoice.html'
 template = template_env.get_template(html_template)
 
+# PDF config
 config_pdf = pdfkit.configuration(wkhtmltopdf="pdf_creator/wkhtmltopdf/bin/wkhtmltopdf.exe")
+
+# Create a pdf variables
+date = datetime.today().strftime("%d - %b - %y")
+
+taxes_porcent = (int(input('Type taxes (in %, just the number): ')))
+
+products = [
+    Product("Gas", 13, 100),
+    Product("Paper", 5, 345),
+    Product("Sponge", 1, 10)
+]
+
+subtotal, taxes, total = calculator_total(products, taxes_porcent)
+
+client = Client("Empesa Juanito", "juancitoenterprice@gmail.com")
+
+purchase_number = 1
+
+# The diccionary about the variables for insert in html
+context = {
+    'date': date,
+    'purchase_number': purchase_number,
+    'client': client,
+    'products': products,
+    'subtotal': subtotal,
+    'taxes': taxes,
+    'taxes_porcent': taxes_porcent,
+    'total': total
+}
 
 # Output (name, path) configuration
 output_text = template.render(context)
 output_pdf_path = 'pdf/'
-output_pdf_filename = 'quote_' + str(number) + '.pdf'
+output_pdf_filename = 'invoice_' + str(purchase_number) + '.pdf'
 output_pdf = output_pdf_path + output_pdf_filename
 
 pdfkit.from_string(output_text, output_pdf, configuration=config_pdf)
