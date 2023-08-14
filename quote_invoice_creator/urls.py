@@ -17,12 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from front_logic import views as views_front
-from email_send import views as views_email
-from pdf_creator import views as views_pdf
+# from email_send import views as views_email
+# from pdf_creator import views as views_pdf
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views_front.home, name="home"),
-    path('email_send/', views_email.email_send, name="email_send"),
-    path('pdf_create/', views_pdf.pdf_create, name="pdf_creator"),
+    # path('email_send/', views_email.email_send, name="email_send"),
+    # path('pdf_create/', views_pdf.pdf_create, name="pdf_creator"),
 ]

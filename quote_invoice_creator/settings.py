@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'front_logic',
-    'pdf_creator',
-    'email_send',
 ]
 
 MIDDLEWARE = [
