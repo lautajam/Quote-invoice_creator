@@ -4,28 +4,26 @@
         <section class="card card-body bg_card">
             <h1 class="display-3 text-center">Job Data Invoicer</h1>
             <hr>
-            <p>The application I have developed is an "Todo App" created using Django, a Python web development framework. This app is designed to help you organize and manage your daily tasks efficiently. With this app, you can create, update and delete tasks, as well as mark them as completed. It also offers additional features such as  he ability to set deadlines, add notes or comments to tasks, and filter them by different categories or tags. </p>
-
-            <p>In addition to the basic functionalities of a "ToDo App", this application uses advanced Django features, such as the user authentication system to allow registration and login, and permissions management to restrict access to certain functionalities to authenticated users only.
-                
-            <p>With this app developed with Django, you can effectively keep track of your daily tasks, improve your productivity and keep your personal or professional life organized.</p> 
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia aspernatur amet, repellendus id beatae, vero pariatur nisi ipsum nesciunt earum quidem modi necessitatibus praesentium dolorum alias, doloribus facere molestiae mollitia laborum est eligendi neque! Eaque obcaecati doloremque itaque ullam iure fugiat excepturi ad neque. Omnis dignissimos in tempora quaerat praesentium, ad placeat officiis sapiente optio cumque dolorem blanditiis iste adipisci quae porro odio maiores quisquam eveniet ipsam magnam ratione est voluptas eum. Quisquam ullam neque eum dolore odit officiis modi nihil rem sit reprehenderit et cupiditate, voluptate earum illo deleniti delectus pariatur non beatae. Ab, temporibus? Est incidunt pariatur id libero, eaque voluptates nulla possimus ipsa unde rerum doloribus nemo hic corrupti quibusdam molestiae cum reprehenderit ab itaque eum? Autem maxime laborum eligendi corporis perferendis sunt voluptas sit ullam minima quis nostrum, repellendus consequuntur aperiam molestias eveniet explicabo optio possimus veritatis, odio aliquid, unde nulla reiciendis sed! Rerum animi culpa nulla assumenda pariatur reiciendis neque, quibusdam cumque optio vero laudantium similique voluptates doloribus accusamus maiores quidem ab illo ut dolorem earum consequatur repudiandae quia eum officia? Excepturi aspernatur voluptate, quo quisquam amet voluptatem ad autem, vero nulla quia odio facilis quos exercitationem consequatur? Sed earum atque delectus commodi cum nostrum architecto id exercitationem, accusamus veritatis suscipit rem velit, distinctio tempora odio? Magni tempora iste repellendus necessitatibus possimus aperiam harum modi. Dolores quam reprehenderit accusantium fugit blanditiis voluptatem aut asperiores. Sequi, quo corporis quas architecto doloremque quaerat et alias. Illum officia quibusdam tenetur natus numquam? Nisi labore perspiciatis reprehenderit architecto aliquid cumque vero sed aspernatur quis assumenda, quae iste ipsa iure, facere possimus adipisci corrupti maxime saepe quasi. Animi totam explicabo error quae tenetur porro officia odio adipisci dolore necessitatibus labore cum perspiciatis, quo, autem, aspernatur repudiandae id dolorum accusamus vel saepe. Aperiam totam voluptatibus tempora odio qui consequuntur obcaecati eius?
+            </p>
             {% if user.is_authenticated%}
                 <div class="text-center">
                     <a href="" class="btn btn-dark text-light" >Historial</a>
                     <a href="" class="btn btn-dark text-light mx-5 my-2">Create budget</a>
                     <a href="" class="btn btn-dark text-light">Create invoice</a>
                     {% if user.is_superuser %}
-                        <a href="/admin" class="btn btn-dark text-light mx-5 my-2">Admin</a>
+                        <a href="{% url 'admin' %}" class="btn btn-dark text-light mx-5 my-2">Admin</a>
                     {% endif %}
                 </div>
             {% else %}
                 <div class="text-center">
-                    <a href="" class="btn btn-dark text-light mx-5 my-2">Create budget</a>
-                    <a href="" class="btn btn-dark text-light">Create invoice</a>
-                </div>
-                <div class="text-center">
-                    <a href="/signup" class="btn btn-dark text-light" >SignUp</a>
-                    <a href="/signin" class="btn btn-dark text-light mx-5 my-2">Login</a>
+                    <div class="d-flex justify-content-center">
+                        <a href="{% url 'create_quote' %}" class="btn btn-dark text-light mx-3 my-2">Create Quote</a>
+                        <a href="{% url 'create_invoice' %}" class="btn btn-dark text-light mx-3 my-2">Create Invoice</a>
+                        <a href="" class="btn btn-dark text-light mx-3 my-2">Sign Up</a>
+                        <a href="" class="btn btn-dark text-light mx-3 my-2">Login</a>
+                    </div>
                 </div>
             {% endif %}
         </section>

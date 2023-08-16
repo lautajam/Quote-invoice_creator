@@ -23,6 +23,8 @@ from front_logic import views as views_front
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views_front.home, name="home"),
+    path('create_quote/', views_front.create_quote, name="create_quote"),
+    path('create_invoice/', views_front.create_invoice, name="create_invoice"),
     # path('email_send/', views_email.email_send, name="email_send"),
     # path('pdf_create/', views_pdf.pdf_create, name="pdf_creator"),
 ]

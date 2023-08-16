@@ -27,7 +27,7 @@
     <body class="background">
         <nav class="navbar navbar-expand-lg bg_nav navbar-dark">
             <div class="container-fluid text-light">
-                <a class="navbar-brand fs-2" href="">JobDataInvoicer</a>
+                <a class="navbar-brand fs-2" href="{% url 'home' %}">JobDataInvoicer</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -65,10 +65,10 @@
                             </li>
                         {% else %}
                             <li class="nav-item">
-                                <a class="nav-link" href="">Create budget</a>
+                                <a class="nav-link" href="{% url 'create_quote' %}">Create Quote</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">Create invoice</a>
+                                <a class="nav-link" href="{% url 'create_invoice' %}"">Create Invoice</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="">SignUp</a>
